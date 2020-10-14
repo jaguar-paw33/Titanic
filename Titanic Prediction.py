@@ -124,7 +124,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, rando
 def models(X_train,Y_train):
   #Using Logistic Regression Algorithm to the Training Set
   from sklearn.linear_model import LogisticRegression
-  log = LogisticRegression(random_state=0)
+  log = LogisticRegression(random_state=3)
   log.fit(X_train, Y_train)
   
   #Using KNeighborsClassifier Method of neighbors class to use Nearest Neighbor algorithm
@@ -134,12 +134,12 @@ def models(X_train,Y_train):
 
   #Using SVC method of svm class to use Support Vector Machine Algorithm
   from sklearn.svm import SVC
-  svc_lin = SVC(kernel = 'linear',random_state=0)
+  svc_lin = SVC(kernel = 'linear',random_state=3)
   svc_lin.fit(X_train, Y_train)
 
   #Using SVC method of svm class to use Kernel SVM Algorithm
   from sklearn.svm import SVC
-  svc_rbf = SVC(kernel = 'rbf',random_state=0)
+  svc_rbf = SVC(kernel = 'rbf',random_state=3)
   svc_rbf.fit(X_train, Y_train)
 
   #Using GaussianNB method of naïve_bayes class to use Naïve Bayes Algorithm
@@ -149,12 +149,12 @@ def models(X_train,Y_train):
 
   #Using DecisionTreeClassifier of tree class to use Decision Tree Algorithm
   from sklearn.tree import DecisionTreeClassifier
-  tree = DecisionTreeClassifier(criterion = 'entropy',random_state=0)
+  tree = DecisionTreeClassifier(criterion = 'entropy',random_state=3)
   tree.fit(X_train, Y_train)
 
   #Using RandomForestClassifier method of ensemble class to use Random Forest Classification algorithm
   from sklearn.ensemble import RandomForestClassifier
-  forest = RandomForestClassifier(n_estimators = 10, criterion = 'entropy')
+  forest = RandomForestClassifier(n_estimators = 10, criterion = 'entropy', random_state=3)
   forest.fit(X_train, Y_train)
   
   return log, knn, svc_lin, svc_rbf, gauss, tree, forest
@@ -173,9 +173,9 @@ def confusionMatrix(model, name):
 def make_prediction(query,model):
   predict=model.predict(query)
   if(predict):
-    st.write("Congratulations! You would have survived.")
+    st.header("Congratulations! You would have survived.")
   else:
-    st.write("Sorry! You wouldn't have Survived.")
+    st.header("Sorry! You wouldn't have Survived.")
 
 st.markdown(body='''
    <div style='border-bottom:2px Solid Black'></div>
@@ -206,7 +206,7 @@ if(st.checkbox('Show Performance of Models')):
   st.write('7. Random Forest Classifier Training Accuracy:', forest.score(X_train, Y_train))
   confusionMatrix(forest,"Random Forest Classifier")
   st.markdown(body='''
-  <h4><em>Logistic Regression is perfotming best for this dataset.</em></h4><br><br>
+  <h4><em>Random Forest is perfotming best for this dataset.</em></h4><br><br>
   ''', unsafe_allow_html=True)
 
 if(st.checkbox('Show Importance of Features in Predicting the Survival Status of Passengers')):
@@ -221,18 +221,18 @@ st.markdown(body='''
 #Making Predictions 
 st.write('\n')
 st.header('Know your Survival Status (if you were on the Titanic)')
-cl=st.text_input('Class')
-sex=st.text_input('Sex')
-age=st.text_input('Age')
-sibsp=st.text_input('Number of Siblings/Spouses Aboard')
-parch=st.text_input('Number of Parents/Children Aboard')
-fare=st.text_input('Fare')
+cl=st.number_input('Class',value=0)
+sex=st.number_input('Sex',value=0)
+age=st.number_input('Age',value=0)
+sibsp=st.number_input('Number of Siblings/Spouses Aboard',value=0)
+parch=st.number_input('Number of Parents/Children Aboard',value=0)
+fare=st.number_input('Fare',value=0)
 
 query=[[cl,sex,age,sibsp,parch,fare]]
 
 
 if(st.button('Make Prediction')):
-  make_prediction(query,log)
+  make_prediction(query,forest)
 
 
 
