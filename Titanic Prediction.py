@@ -16,7 +16,7 @@ from sklearn import preprocessing
 st.title("Titanic Survival Prediction")
 st.markdown(body='''
 <br>
-<img src='https://upload.wikimedia.org/wikipedia/commons/9/9c/Titanic_wreck_bow.jpg' height='400' width='670'>
+<img src='https://upload.wikimedia.org/wikipedia/commons/9/9c/Titanic_wreck_bow.jpg' width=96%>
 <br>
 <br>
 
