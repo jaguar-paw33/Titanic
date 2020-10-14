@@ -206,7 +206,7 @@ if(st.checkbox('Show Performance of Models')):
   st.write('7. Random Forest Classifier Training Accuracy:', forest.score(X_train, Y_train))
   confusionMatrix(forest,"Random Forest Classifier")
   st.markdown(body='''
-  <h4><em>The best Model is Random Forest</em></h4><br><br>
+  <h4><em>Logistic Regression is perfotming best for this dataset.</em></h4><br><br>
   ''', unsafe_allow_html=True)
 
 if(st.checkbox('Show Importance of Features in Predicting the Survival Status of Passengers')):
@@ -232,7 +232,7 @@ query=[[cl,sex,age,sibsp,parch,fare]]
 
 
 if(st.button('Make Prediction')):
-  make_prediction(query,forest)
+  make_prediction(query,log)
 
 
 
