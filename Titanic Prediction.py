@@ -20,7 +20,7 @@ st.markdown(body='''
 <br>
 <br>
 
-<p>Titanic Survival Dataset consists data about 848 passengers who were\
+<p>Titanic Survival Dataset consists data about 712 passengers who were\
  there on the ship, each passenger is described by the following characterstics,\
    <ol>
     <li>Survived
@@ -85,7 +85,7 @@ if st.checkbox('Show Dataset'):
   st.markdown(body='''
   <br>
   <h4>Exploratory Data Analysis</h4>
-
+  <br>
   ''', unsafe_allow_html=True)
 
   if(st.checkbox('Show Plots')):
@@ -173,9 +173,9 @@ def confusionMatrix(model, name):
 def make_prediction(query,model):
   predict=model.predict(query)
   if(predict):
-    st.write("Congratulations! You made it.")
+    st.write("Congratulations! You would have survived.")
   else:
-    st.write("Sorry! You didn't make it.")
+    st.write("Sorry! You wouldn't .")
 
 st.markdown(body='''
    <div style='border-bottom:2px Solid Black'></div>
@@ -206,7 +206,7 @@ if(st.checkbox('Show Performance of Models')):
   st.write('7. Random Forest Classifier Training Accuracy:', forest.score(X_train, Y_train))
   confusionMatrix(forest,"Random Forest Classifier")
   st.markdown(body='''
-  <h4><em>The best Model is Random Forest</em></h4>
+  <h4><em>The best Model is Random Forest</em></h4><br><br>
   ''', unsafe_allow_html=True)
 
 if(st.checkbox('Show Importance of Features in Predicting the Survival Status of Passengers')):
