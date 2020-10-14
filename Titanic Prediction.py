@@ -175,7 +175,7 @@ def make_prediction(query,model):
   if(predict):
     st.write("Congratulations! You would have survived.")
   else:
-    st.write("Sorry! You wouldn't .")
+    st.write("Sorry! You wouldn't have Survived.")
 
 st.markdown(body='''
    <div style='border-bottom:2px Solid Black'></div>
