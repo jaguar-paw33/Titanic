@@ -11,12 +11,20 @@ from sklearn.metrics import confusion_matrix
 from sklearn import preprocessing 
 
 
-
 # Dataset Description
 st.title("Titanic Survival Prediction")
 st.markdown(body='''
+<style>
+body {
+background-image: url("https://cutewallpaper.org/21/gradient-hd-background/Blue-Gradient-Background-4K-HD-Desktop-Wallpaper-for-4K-.jpg");
+background-size: cover;
+background-position:center;
+background-attachment: fixed;
+}
+</style>
+
 <br>
-<img src='https://upload.wikimedia.org/wikipedia/commons/9/9c/Titanic_wreck_bow.jpg' width=96%>
+<img style="border-radius:6px;" src='https://static.toiimg.com/photo/58787332.cms' width=96%>
 <br>
 <br>
 
@@ -221,12 +229,12 @@ st.markdown(body='''
 #Making Predictions 
 st.write('\n')
 st.header('Know your Survival Status (if you were on the Titanic)')
-cl=st.number_input('Class',value=0)
-sex=st.number_input('Sex',value=0)
-age=st.number_input('Age',value=0)
-sibsp=st.number_input('Number of Siblings/Spouses Aboard',value=0)
-parch=st.number_input('Number of Parents/Children Aboard',value=0)
-fare=st.number_input('Fare',value=0)
+cl=st.number_input('Class',value=1, min_value=1, max_value=3)
+sex=st.number_input('Sex',value=0, min_value=0, max_value=1)
+age=st.number_input('Age',value=1, min_value=1, max_value=150)
+sibsp=st.number_input('Number of Siblings/Spouses Aboard',value=0,min_value=0, max_value=100)
+parch=st.number_input('Number of Parents/Children Aboard',value=0,min_value=0, max_value=100)
+fare=st.number_input('Fare',value=5,min_value=5, max_value=200)
 
 query=[[cl,sex,age,sibsp,parch,fare]]
 
