@@ -81,6 +81,7 @@ titanic=titanic.drop(['PassengerId','Name','Ticket','Cabin','Embarked' ], axis=1
 label_encoder = preprocessing.LabelEncoder() 
 titanic['Sex']= label_encoder.fit_transform(titanic['Sex']) 
 titanic['Age']=titanic['Age'].astype('int64')
+titanic=titanic.reset_index(drop=True)
 
 #Show Dataset
 if st.checkbox('Show Dataset'):
